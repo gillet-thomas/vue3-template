@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Hello from home {{ store.state.name }}</h1>
+    <h1>Hello from home {{ store.name }}</h1>
     <p>Counter {{ counter }}</p>
     <button type="button" class="btn btn-primary" @click="increment()">Increment</button>
   </div>
@@ -8,13 +8,13 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import { useStore } from "vuex";
+import mainStore from '../store/index'
 
-const store = useStore();
+const store = mainStore();
 let counter = ref(5);
 
 onMounted(() => {
-  store.dispatch("setName", "Thomas");
+  store.setName("Thomas");
   counter.value = 7;
 });
 

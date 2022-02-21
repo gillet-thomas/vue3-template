@@ -1,21 +1,12 @@
-import { createStore } from "vuex";
+import { defineStore } from "pinia";
 
-const store = createStore({
-  state() {
-    return {
-      name: null,
-    };
-  },
-  mutations: {
-    SET_NAME(state, value) {
-      state.name = value;
-    },
-  },
+const store = defineStore('main', {
+  state: () => ({ name: "Jean" }),
   actions: {
-    setName({ commit }, value) {
-      commit("SET_NAME", value);
+    setName(newName: string) {
+      this.name = newName;
     },
   },
-});
+})
 
 export default store;
